@@ -5,13 +5,35 @@
 <meta charset="UTF-8">
 </head>
 
+<style>
+  h1 {
+    text-align: center;
+  }
+  body {background-color: lightblue;}
+  #myCanvas {
+    margin:auto;
+    padding: 1cm;
+    border: 10px solid gray;
+  }
+</style>
 <body>
-What's up?
-  <canvas id="myCanvas" width=512 height=512></canvas>
+<h1>Greetings, human!</h1>
+<br>
+<canvas id="myCanvas" width=512 height=512></canvas>
   <script>
-   const canvas = document.getElementById("myCanvas");
+   canvas = document.getElementById("myCanvas");
+
+   window.onresize = function() {
+     canvas = document.getElementById("myCanvas");
+     canvas.height = window.innerHeight * .5;
+     canvas.width = window.innerWidth * .5;
+     ctx = canvas.getContext("2d");
+     ctx.fillStyle = "rgb(0,0,0)";
+     ctx.fillRect(0,0,canvas.width, canvas.height);
+   }
+
     console.log("The canvas: " + canvas);
-    const context = canvas.getContext("2d");
+    context = canvas.getContext("2d");
     context.fillStyle = "rgb(0,0,180)";
     context.fillRect(0, 0, 256, 256);
 
