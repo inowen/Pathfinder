@@ -8,13 +8,13 @@ body {
 
 #canvas_div {
     text-align : center;
+    border: 10px solid red;
+    background-color: seagreen;
 }
 
-/*
 #myCanvas {
     text-align : center;
     padding: 0cm;
-    margin: 1cm;
-    border: 10px solid gray;
+    margin: 0cm;
+    border: 5px solid gray;
 }
-*/
