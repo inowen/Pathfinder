@@ -13,7 +13,7 @@ window.onresize = function () {
 console.log("The canvas: " + canvas);
 context = canvas.getContext("2d");
 context.fillStyle = "rgb(0,0,180)";
-context.fillRect(0, 0, 256, 256);
+context.fillRect(0, 0, canvas.width, canvas.height);
 
 // INFO: The image loads asynchronously. So wait until it is loaded before drawing it.
 var img = new Image();
