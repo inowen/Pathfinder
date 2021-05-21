@@ -1,0 +1,13 @@
+h1 {
+    text-align: center;
+}
+
+body {
+    background-color: lightblue;
+}
+
+#myCanvas {
+    margin:auto;
+    padding: 1cm;
+    border: 10px solid gray;
+}
