@@ -25,10 +25,8 @@ body {
     background-color: gold;
     padding: 16px;
     margin: 10px;
-    cursor: crosshair;
 }
 
-#dropdown:focus {
-    background-color: solid grey;
-
+#dropdown:hover {
+    background-color: grey;
 }
