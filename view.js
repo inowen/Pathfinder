@@ -21,3 +21,7 @@ img.src = "test/hello-hi.jpg";
 img.onload = function () {
     context.drawImage(img, 10, 10, 100, 100); // x,y,width,height. The image scales.
 }
+
+// Testing the drop-down thing
+var button = document.getElementById("drop-down");
+

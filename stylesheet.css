@@ -18,3 +18,15 @@ body {
     margin: 0cm;
     border: 5px solid gray;
 }
+
+#drop-down {
+    font-size: medium;
+    color: blue;
+    background-color: gold;
+    padding: 16px;
+    margin: 10px;
+}
+
+#drop-down:hover {
+    background-color: solid grey;
+}
