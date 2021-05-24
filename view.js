@@ -23,5 +23,11 @@ img.onload = function () {
 }
 
 // Testing the drop-down thing
-var button = document.getElementById("drop-down");
+var button = document.getElementById("dropdown");
+/*
+button.onmousemove = function() {
+    button.style.backgroundColor = "grey";
+    button.style.padding = "30px";
+}
+*/
 

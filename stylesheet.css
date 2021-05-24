@@ -19,14 +19,16 @@ body {
     border: 5px solid gray;
 }
 
-#drop-down {
+#dropdown {
     font-size: medium;
     color: blue;
     background-color: gold;
     padding: 16px;
     margin: 10px;
+    cursor: crosshair;
 }
 
-#drop-down:hover {
+#dropdown:focus {
     background-color: solid grey;
+
 }
