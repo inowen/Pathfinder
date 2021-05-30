@@ -17,7 +17,7 @@
         Substitute page
     </h1>
 
-    <p>
+    <p id="par">
         This is meant to test transferring info from one html page to another without a backend.
         (or something like that, I don't speak web developer :) )
     </p>
@@ -27,6 +27,9 @@
 
     <br>
 
+    <script>
+        document.getElementById("par").innerHTML = "--->" + window.location.search;
+    </script>
 </body>
 
 </html>
