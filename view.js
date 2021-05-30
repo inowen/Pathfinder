@@ -38,3 +38,8 @@ action_button.onclick = function() {
     let text = sel.options[sel.selectedIndex].text;
     console.log(value, text);
 }
+
+var sub_link = document.getElementById("sub_link");
+sub_link.onclick = function() {
+    alert("Hello!");
+}
