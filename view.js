@@ -31,3 +31,10 @@ button.onmousemove = function() {
 }
 */
 
+var action_button = document.getElementById("action_button");
+action_button.onclick = function() {
+    var sel = document.getElementById("sel");
+    let value = sel.options[sel.selectedIndex].value;
+    let text = sel.options[sel.selectedIndex].text;
+    console.log(value, text);
+}
