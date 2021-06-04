@@ -17,7 +17,7 @@ context.fillRect(0, 0, canvas.width, canvas.height);
 
 // INFO: The image loads asynchronously. So wait until it is loaded before drawing it.
 var img = new Image();
-img.src = "test/hello-hi.jpg";
+img.src = "hello-hi.jpg";
 img.onload = function () {
     context.drawImage(img, 10, 10, 100, 100); // x,y,width,height. The image scales.
 }
