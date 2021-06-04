@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>WEBSITE</title>
+<meta charset="UTF-8">
+<link rel="stylesheet", href="stylesheet.css"> <!-- rel: relationship between html and file. href: URL -->
+</head>
+
+<body>
+<h1>Greetings, human!</h1>
+<br>
+<div id="canvas_div">
+  <canvas id="myCanvas" width=512 height=512></canvas>
+</div>
+<input type="checkbox">
+<button id="dropdown">I'm (apparently not) a drop-down!</button>
+<select name="choice" id="sel">
+  <optgroup label="Category1">
+    <option label="C1">C1</option>
+    <option label="C2">C2</option>
+  </optgroup>
+  <optgroup label="Category2">
+    <option label="C3">C3</option>
+    <option label="C4">C4</option>
+  </optgroup>
+</select>
+<br>
+<br>
+<!-- Button that takes the dropdown content and writes it to the console -->
+<button id="action_button">ACTION</button>
+
+<br> <br>
+<a href="substitute1.html" id="sub_link">Go to the substitute page</a>
+</body>
+
+<br>
+<br>
+
+<form action="substitute1.html" method="GET">
+  <input type="text" name="serialNumber" />
+  <input type="submit" value="Submit" />
+</form>
+
+<br>
+
+<script src="view.js"></script>
+</html>
