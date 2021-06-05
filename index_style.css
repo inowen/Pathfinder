@@ -14,3 +14,16 @@ body {
     text-align:center;
     vertical-align:middle;
 }
+
+#select_string {
+    color: white;
+    font-size: large;
+    font-style:normal;
+}
+
+#start_btn {
+    padding:5%;
+    width: 80%;
+    border:4px solid black;
+    background-color: tomato;
+}

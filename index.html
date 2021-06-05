@@ -9,12 +9,26 @@
 <body>
 
     <div class="startMenu">
-        Select algorithm and map.
-        <!--
+        <p id="select_string">Select algorithm and map.</p>
         <form action="game.html" method="GET">
-            
+            <label for="algorithm">Algorithm:</label>
+            <select name="algorithm" id="alg_select">
+                <option value="astar">A*</option>
+                <option value="dfs">Depth First Search</option>
+                <option value="bfs">Breadth First Search</option>
+                <option value="it_deepening">Iterative Deepening</option>
+                <option value="greedy">Greedy</option>
+            </select>
+            <br>
+            <label for="map">Map:</label>
+            <select name="map" id="map_select">
+                <option value="placeholder">Placeholder</option>
+            </select>
+            <br> <br>
+            <button id="start_btn">
+                START
+            </button>
         </form>
-        -->
     </div>
 
 </body>
