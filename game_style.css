@@ -8,13 +8,15 @@ html, body {
 
 .screen, .control_panel {
     float:left;
-    height: 100%;
 }
 
 .control_panel {
     background-color:skyblue;
     width:19%;
     border: 1px solid blue;
+    text-align:center;
+    height:fit-content;
+    padding-bottom: 2%;
 }
 
 .screen {
@@ -24,6 +26,7 @@ html, body {
     vertical-align:center;
     border-radius: 10px;
     border: 1px solid green;
+    height: 100%;
 }
 
 
@@ -43,4 +46,18 @@ html, body {
     margin-top:1%;
     height:95%;
     width:95%;
+}
+
+#step_btn, #run_btn {
+    margin:5px;
+    background-color: green;
+    border:2px solid black;
+    padding:10px;
+    color:white;
+    width:75%;
+}
+
+#speed_seekbar {
+    width:70%;
+    padding:5px;
 }
