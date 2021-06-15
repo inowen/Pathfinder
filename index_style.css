@@ -30,6 +30,10 @@ body {
     background-color: tomato;
 }
 
+#start_btn:hover {
+    background-color: darkred;
+}
+
 #alg_label {
     padding-left:5%;
 }

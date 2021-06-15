@@ -57,6 +57,10 @@ html, body {
     width:75%;
 }
 
+#step_btn:hover, #run_btn:hover {
+    cursor: pointer;
+}
+
 #speed_seekbar {
     width:70%;
     padding:5px;
