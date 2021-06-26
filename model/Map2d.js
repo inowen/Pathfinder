@@ -17,22 +17,37 @@ class Map2d {
      * The size of the array is NxN.
      * This method returns N.
      */
-    get size () {
+    size () {
         return this.size;
     }
 
 
     read(map_name) {
-        // Read file: Make an ajax request, wait for it. Then take the response and do whatever.
+        // Read file.
         map_name = map_name + ".txt";
         const request = new XMLHttpRequest();
         request.open('get', 'maps/'+map_name ,false);
         request.send();
-        console.log("Read:");
-        console.log(request.responseText);
-
-        // Get dimensions. Set this.size
+        var map_str = request.responseText;
+        var lines = map_str.split('\n');
+        this.size = lines[0].split(' ')[0];
+        lines.shift(); // Eliminate size header
+        for (var l=0; l<lines.length; ++l) {
+            lines[l] = lines[l].trim();
+        }
 
         // Create and populate matrix
+        this.matrix = new Array();
+        for (let i=0; i<lines.length; ++i) {
+            this.matrix[i] = new Array();
+            let chars = lines[i].split(' ');
+            for (let c=0; c<chars.length; ++c) {
+                this.matrix[i][c] = chars[c];
+            }
+        }
+        console.log(this.matrix);
+        console.log("Saved size: " + this.size);
+        console.log("Num. rows in the matrix: " + this.matrix.length);
+        console.log("Num. cols in the first col: " + this.matrix[0].length);
     }
 }
