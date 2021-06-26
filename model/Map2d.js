@@ -1,11 +1,11 @@
-// Stores a nxn char matrix that represents a map.
-// Getters for size, get(x,y), isObstacle(x,y), isWalkable(x,y)
-// Constructor takes name of a map. Then read(string) reads the map from the textfile.
-// All maps have height=width
-
+/*
+ * Maps are squared, meaning their height is the same as their width.
+ */
 class Map2d {
     constructor(map_name) {
         this.map_name = map_name;
+        this.matrix = new Array();
+        this.size = 0;
         this.read(map_name);
     }
 
@@ -14,11 +14,35 @@ class Map2d {
     }
 
     /**
-     * The size of the array is NxN.
+     * The size of the map is NxN.
      * This method returns N.
      */
     size () {
         return this.size;
+    }
+
+    matrix () {
+        return new Array(this.matrix);
+    }
+
+    isWalkable(x, y) {
+
+    }
+
+    isObstacle(x, y) {
+
+    }
+
+    isVehicle(x, y) {
+
+    }
+
+    isInsideMap(x, y) {
+
+    }
+
+    get(x, y) {
+
     }
 
 
@@ -37,7 +61,6 @@ class Map2d {
         }
 
         // Create and populate matrix
-        this.matrix = new Array();
         for (let i=0; i<lines.length; ++i) {
             this.matrix[i] = new Array();
             let chars = lines[i].split(' ');
@@ -45,9 +68,6 @@ class Map2d {
                 this.matrix[i][c] = chars[c];
             }
         }
-        console.log(this.matrix);
-        console.log("Saved size: " + this.size);
-        console.log("Num. rows in the matrix: " + this.matrix.length);
-        console.log("Num. cols in the first col: " + this.matrix[0].length);
     }
+
 }
