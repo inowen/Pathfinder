@@ -1,5 +1,8 @@
 /*
  * Maps are squared, meaning their height is the same as their width.
+ * 
+ * C = cliff. F = floor. R = road. W = water. S = snow. O = obstacle.
+ * c = car. b = boat. s = snow mobile.
  */
 class Map2d {
     constructor(map_name) {
@@ -26,23 +29,25 @@ class Map2d {
     }
 
     isWalkable(x, y) {
-
+        return !this.isObstacle(x,y);
     }
 
     isObstacle(x, y) {
-
+        let v = this.matrix[x][y];
+        return v=='C' || v=='O';
     }
 
     isVehicle(x, y) {
-
+        let v = this.matrix[x][y];
+        return v=='s' || v=='c' || v=='b';
     }
 
     isInsideMap(x, y) {
-
+        return x>=0 && y>=0 && x<this.size && y<this.size;
     }
 
     get(x, y) {
-
+        return this.matrix[x][y];
     }
 
 

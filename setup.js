@@ -6,6 +6,7 @@ map = new Map2d("country_roads");
 
 alert(map.name);
 console.log(map.matrix);
+console.log(map.isWalkable(1,1));
 
 
 
