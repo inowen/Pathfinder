@@ -43,3 +43,28 @@ var sub_link = document.getElementById("sub_link");
 sub_link.onclick = function() {
     alert("Hello!");
 }
+
+// Apparently resolve and reject are callbacks provided by JavaScript. 
+// We just say the executor has those two arguments, JS does the rest?
+// Or is this related to the then/catch?
+
+// Then and catch return Promise objects themselves, so they are "chainable".
+
+// Promises have an internal state: pending, fulfilled, or rejected. 
+
+// Call resolve(return_value) to change the state of the Promise to resolved and give it that value.
+// Call reject(error) ... where I don't really know what type that error is supposed to be.
+
+var v = new Promise((resolve, reject) => {
+    console.log("I made it!");
+    resolve(69);
+});
+
+v.then(response => {
+    console.log("Response in then is: " + response);
+})
+
+// What the code above does: Asynchronously run the executor function, and store the promise 
+// for what it's going to return in v. 
+// After that, attach a callback to v, which (once the promise is resolved or rejected) takes
+// the value returned by the executor and prints it out.
