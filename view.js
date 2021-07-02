@@ -42,8 +42,9 @@ class View {
     /**
      * Blocks the thread until all the texture images are done loading.
      */
-    waitImagesLoaded() {
-
+    async waitImagesLoaded() {
+        await this.car_tex;
+        await this.boat_tex; // ... (make them into promises?)
     }
     
 }
