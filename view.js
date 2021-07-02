@@ -3,6 +3,13 @@
 
 
 // How to wait until these images load?
+/*
+    According to SO, this can be done using Promise. 
+    A function that returns a promise. 
+        The executor sets the onload callback, and inside that callback it uses resolve.
+         (this way the promise is only resolved once the image loads).
+    - Can I then await that from the main thread, or is that one not allowed to wait for stuff?
+*/
 
 
 class View {
