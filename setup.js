@@ -17,8 +17,9 @@ async function main() {
 
     // DOWN HERE, DEBUGGING
     let v = new View();
-    v.waitImagesLoaded();
+    await v.waitTexturesLoaded();
     console.log("Images loaded!");
+    v.printTextures();
 }
 
 
