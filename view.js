@@ -39,7 +39,6 @@ class View {
         this.promises.push(this.getLoadPromise(this.cliff, "textures/"));
         this.promises.push(this.getLoadPromise(this.water, "textures/"));
         this.promises.push(this.getLoadPromise(this.obstacle, "textures/"));
-
     }
 
     /**
@@ -60,7 +59,7 @@ class View {
                 resolve("DONE!");
             };
             img.onerror = () => {
-                resolve("Error");
+                reject("Error");
             }
             img.src = src;
         });
@@ -77,14 +76,10 @@ class View {
         console.log(this.road);
         console.log(this.snow);
         console.log(this.floor);
-        // Remove this part later. Just testing
-        console.log(".........");
+    }
+
+    printPromises() {
         console.log(this.promises);
-        console.log(this.promises[0]);
-        setTimeout(() => {console.log("I waited");
-            console.log(this.promises);
-        }, 1000);
-        
     }
     
 }
