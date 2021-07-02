@@ -1,26 +1,11 @@
 
-function testStuff() {
-    return new Promise((resolve, reject) => {
-        resolve("");
-    });
-}
-
 async function main() {
-    await testStuff();
-    console.log("Hello, world! This is the main function. From async-landia.");
+    /**
+     * In here: Await loading the textures, load map, initialize model, view and controller.
+     * Then finally attach the listeners to the html elements. The listeners call controller methods
+     * (the controller is a singleton).
+     */
 }
 
 
 main();
-
-
-
-
-// Initialize the Controller singleton, map, view, etc.
-
-
-
-
-
-// END:
-// Set up listeners on html elements to call appropriate controller methods
