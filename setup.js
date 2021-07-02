@@ -17,9 +17,15 @@ async function main() {
 
     // DOWN HERE, DEBUGGING
     let v = new View();
-    await v.waitTexturesLoaded();
+    try {
+        await v.waitTexturesLoaded();
+    }
+    catch(error) {
+        console.log("Caught an error, remember to add textures");
+    }
     console.log("Images loaded!");
     v.printTextures();
+    console.log("----");
 }
 
 

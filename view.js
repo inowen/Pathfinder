@@ -19,26 +19,32 @@ class View {
 
         // Load the textures required to paint 
         // (start loading anyway, later when using them wait for the loading to be completed)
-        this.car_tex = new Image();
-        this.boat_tex = new Image();
-        this.sm_tex = new Image();
+        this.car_skin = new Image();
+        this.boat_skin = new Image();
+        this.sm_skin = new Image();
         this.snow = new Image();
         this.road = new Image();
         this.floor = new Image();
         this.cliff = new Image();
         this.water = new Image();
         this.obstacle = new Image();
+        this.car = new Image();
+        this.boat = new Image();
+        this.snowmobile = new Image();
 
         this.promises = new Array();
-        this.promises.push(this.getLoadPromise(this.car_tex, "textures/"));
-        this.promises.push(this.getLoadPromise(this.boat_tex, "textures/"));
-        this.promises.push(this.getLoadPromise(this.sm_tex, "textures/"));
-        this.promises.push(this.getLoadPromise(this.snow, "textures/"));
-        this.promises.push(this.getLoadPromise(this.road, "textures/"));
+        this.promises.push(this.getLoadPromise(this.car_skin, "textures/character.png"));
+        this.promises.push(this.getLoadPromise(this.boat_skin, "textures/character.png"));
+        this.promises.push(this.getLoadPromise(this.sm_skin, "textures/character.png"));
+        this.promises.push(this.getLoadPromise(this.snow, "textures/snow.png"));
+        this.promises.push(this.getLoadPromise(this.road, "textures/road.png"));
         this.promises.push(this.getLoadPromise(this.floor, "textures/grass.png"));
-        this.promises.push(this.getLoadPromise(this.cliff, "textures/"));
-        this.promises.push(this.getLoadPromise(this.water, "textures/"));
-        this.promises.push(this.getLoadPromise(this.obstacle, "textures/"));
+        this.promises.push(this.getLoadPromise(this.cliff, "textures/death.jpg"));
+        this.promises.push(this.getLoadPromise(this.water, "textures/water.jpg"));
+        this.promises.push(this.getLoadPromise(this.obstacle, "textures/brick.jpg"));
+        this.promises.push(this.getLoadPromise(this.car, "textures/garage.jpg"));
+        this.promises.push(this.getLoadPromise(this.boat, "textures/port.jpg"));
+        this.promises.push(this.getLoadPromise(this.snowmobile, "textures/snowmobile_garage.jpg"));
     }
 
     /**
@@ -67,9 +73,9 @@ class View {
 
     // Debugging purposes
     printTextures() {
-        console.log(this.car_tex);
-        console.log(this.boat_tex);
-        console.log(this.sm_tex);
+        console.log(this.car_skin);
+        console.log(this.boat_skin);
+        console.log(this.sm_skin);
         console.log(this.water);
         console.log(this.obstacle);
         console.log(this.cliff);
