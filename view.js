@@ -28,23 +28,55 @@ class View {
         this.cliff = new Image();
         this.water = new Image();
         this.obstacle = new Image();
-        car_tex.src = "textures/";
-        boat_tex.src = "textures/";
-        sm_tex.src = "textures/";
-        snow.src = "textures/";
-        road.src = "textures/";
-        floor.src = "textures/";
-        cliff.src = "textures/";
-        water.src = "textures/";
-        obstacle.src = "textures/";
+
+        this.promises = new Array();
+        this.promises.push(this.getLoadPromise(this.car_tex, "textures/"));
+        this.promises.push(this.getLoadPromise(this.boat_tex, "textures/"));
+        this.promises.push(this.getLoadPromise(this.sm_tex, "textures/"));
+        this.promises.push(this.getLoadPromise(this.snow, "textures/"));
+        this.promises.push(this.getLoadPromise(this.road, "textures/"));
+        this.promises.push(this.getLoadPromise(this.floor, "textures/"));
+        this.promises.push(this.getLoadPromise(this.cliff, "textures/"));
+        this.promises.push(this.getLoadPromise(this.water, "textures/"));
+        this.promises.push(this.getLoadPromise(this.obstacle, "textures/"));
+
     }
 
     /**
-     * Blocks the thread until all the texture images are done loading.
+     * Wait until all the texture images are done loading.
+     * To wait for the textures to load, await his function.
      */
     async waitImagesLoaded() {
-        await this.car_tex;
-        await this.boat_tex; // ... (make them into promises?)
+        this.promises.forEach(p => {
+            await p;
+        });
+    }
+ 
+    
+    // Get Promise that resolves as soon as the image loads the given source.
+    getLoadPromise(img, src) {
+        return new Promise((resolve, reject) => {
+            img.onload = () => {
+                resolve("");
+            };
+            img.src = src;
+        });
+    }
+
+    // Debugging purposes
+    printTextures() {
+        console.log(this.car_tex);
+        console.log(this.boat_tex);
+        console.log(this.sm_tex);
+        console.log(this.water);
+        console.log(this.obstacle);
+        console.log(this.cliff);
+        console.log(this.road);
+        console.log(this.snow);
+        console.log(this.floor);
+        // Remove this part later. Just testing
+        console.log(".........");
+        console.log(this.promises);
     }
     
 }
