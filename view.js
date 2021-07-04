@@ -13,8 +13,8 @@
 
 
 class View {
-    constructor() {
-        // Do other constructor stuff... something like linking the canvas to the view?
+    constructor(canvas) {
+        this.canvas = canvas;
 
 
         // Load the textures required to paint 
@@ -46,6 +46,23 @@ class View {
         this.promises.push(this.getLoadPromise(this.boat, "textures/port.jpg"));
         this.promises.push(this.getLoadPromise(this.snowmobile, "textures/snowmobile_garage.jpg"));
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Wait until all the texture images are done loading.
@@ -90,6 +107,12 @@ class View {
 
     printPromises() {
         console.log(this.promises);
+    }
+
+    testCanvas() {
+        var ctx = this.canvas.getContext('2d');
+        ctx.fillStyle = "rgb(255, 0, 0)";
+        ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     }
     
 }

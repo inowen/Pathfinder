@@ -7,6 +7,17 @@ async function main() {
      */
 
     // Create view, wait for images to load
+    var canvas = document.getElementById('view_canvas');
+    let view = new View(canvas);
+    try {
+        await v.waitTexturesLoaded();
+    }
+    catch (error) {
+        console.log("Caught an error, remember to add textures");
+    }
+    
+
+
 
     // Create and initialize model
 
@@ -16,16 +27,8 @@ async function main() {
 
 
     // DOWN HERE, DEBUGGING
-    let v = new View();
-    try {
-        await v.waitTexturesLoaded();
-    }
-    catch(error) {
-        console.log("Caught an error, remember to add textures");
-    }
-    console.log("Images loaded!");
-    v.printTextures();
-    console.log("----");
+    view.testCanvas();
+
 }
 
 
