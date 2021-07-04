@@ -48,20 +48,82 @@ class View {
     }
 
 
+    drawGameState(gameState) {
+        this.drawMap(gameState.map);
+        this.drawPath(gameState.plan);
+        this.drawPlayer(gameState.x, gameState.y, gameState.orientation);
+    }
 
 
+    drawMap(map2d) {
+        this.drawGridLines(map2d.size);
+    }
 
 
+    drawPlayer(x, y, orientation) {
+
+    }
 
 
+    drawPath(actionsArray) {
 
 
+    }
 
+    drawGridLines(numRowsCols) {
+        var distHorizontal = this.canvas.width / numRowsCols;
+        var ctx = this.canvas.getContext('2d');
+        ctx.fillStyle = "rgb(0,0,0)";
+        ctx.lineWidth = 1;
+        for (var i=0.5; i<this.canvas.width; i+=distHorizontal) {
+            //ctx.fillRect(i, 0, 1, this.canvas.height);
+            ctx.beginPath();
+            ctx.moveTo(i,0);
+            ctx.lineTo(i,this.canvas.height);
+            ctx.closePath();
+            ctx.stroke();
+        }
+        var distVertical = this.canvas.height / numRowsCols;
+        for (var i=0.5; i<this.canvas.height; i+=distVertical) {
+            ctx.beginPath();
+            ctx.moveTo(0, i);
+            ctx.lineTo(this.canvas.width, i);
+            ctx.closePath();
+            ctx.stroke();
+        }
+    }
 
+    paintParcel(x, y, texChar, numRowCols) {
+        var parcelWidth = this.canvas.width / numRowCols;
+        var parcelHeight = this.canvas.height / numRowCols;
+        var ctx = this.canvas.getContext('2d');
+        var texture = getTextureFromChar(texChar);
+        ctx.drawImage(texture, x*parcelWidth+1, y*parcelHeight+1, parcelWidth-2, parcelHeight-2);
+    }
 
-
-
-
+    getTextureFromChar(texChar) {
+        // snow, road, cliff, floor, water, obstacle, car, boat, snowmobile
+        switch(texChar) {
+            case 'c':
+                return this.car;
+            case 'b':
+                return this.boat;
+            case 's':
+                return this.snowmobile;
+            case 'S':
+                return this.snow;
+            case 'R':
+                return this.road;
+            case 'C':
+                return this.cliff;
+            case 'F':
+                return this.floor;
+            case 'W':
+                return this.water;
+            case 'O':
+                return this.obstacle;
+        }
+    }
 
 
     /**

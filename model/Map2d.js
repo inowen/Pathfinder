@@ -5,7 +5,7 @@
  * c = car. b = boat. s = snow mobile.
  */
 class Map2d {
-    constructor(map_name) {
+    constructor(map_name) { // Map name without extension!
         this.map_name = map_name;
         this.matrix = new Array();
         this.size = 0;
