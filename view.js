@@ -50,6 +50,7 @@ class View {
     /**
      * Wait until all the texture images are done loading.
      * To wait for the textures to load, await his function.
+     * Might throw an exception if the promise is rejected.
      */
     async waitTexturesLoaded() {
         for(var i=0; i<this.promises.length; ++i) {
@@ -82,6 +83,9 @@ class View {
         console.log(this.road);
         console.log(this.snow);
         console.log(this.floor);
+        console.log(this.car);
+        console.log(this.boat);
+        console.log(this.snowmobile);
     }
 
     printPromises() {
