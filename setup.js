@@ -9,12 +9,7 @@ async function main() {
     // Create view, wait for images to load
     var canvas = document.getElementById('view_canvas');
     let view = new View(canvas);
-    try {
-        await v.waitTexturesLoaded();
-    }
-    catch (error) {
-        console.log("Caught an error, remember to add textures");
-    }
+    await view.waitTexturesLoaded();
     
 
 
@@ -27,7 +22,8 @@ async function main() {
 
 
     // DOWN HERE, DEBUGGING
-    view.testCanvas();
+    let map = new Map2d('country_roads');
+    view.drawMap(map);
 
 }
 
