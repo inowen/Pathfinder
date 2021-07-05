@@ -57,11 +57,48 @@ class View {
 
     drawMap(map2d) {
         this.drawGridLines(map2d.size);
+        for (var f=0; f<map2d.size; ++f) {
+            for (var c=0; c<map2d.size; ++c) {
+                this.paintParcel(c, f, map2d.get(c, f), map2d.size);
+            }
+        }
     }
 
-
-    drawPlayer(x, y, orientation) {
-
+    // (x,y) are the grid coordinates of the parcel where the player is
+    // numRowsCols is the size of the map (the number of rows, also the number of colums)
+    drawPlayer(parcel_x, parcel_y, orientation, numRowsCols) {
+        let distHorizontal = this.canvas.width / numRowsCols;
+        let distVertical = this.canvas.height / numRowsCols;
+        let x = parcel_x * distHorizontal;
+        let y = parcel_y * distVertical;
+        var ctx = this.canvas.getContext('2d');
+        ctx.fillStyle = "rgb(255,0,0)";
+        // Draw and fill a triangle. Two points on the back edge, one in the center of the opposite side.
+        ctx.beginPath();
+        switch (orientation) {
+            case 0: // Upwards: point bottom left, bottom right, middle up
+                ctx.moveTo(x,y+distVertical);
+                ctx.lineTo(x+distHorizontal, y+distVertical);
+                ctx.lineTo(x+distHorizontal/2, y);
+                break;
+            case 1: // Right: point bottom left, top left, middle right
+            ctx.moveTo(x,y);
+            ctx.lineTo(x,y+distVertical);
+            ctx.lineTo(x+distHorizontal, y+distVertical/2);
+                break;
+            case 2: // Downwards: point top left, top right, middle bottom
+                ctx.moveTo(x,y);
+                ctx.lineTo(x+distHorizontal,y);
+                ctx.lineTo(x+distHorizontal/2, y+distVertical);
+                break;
+            case 3: // Left: point top right, bottom right, middle left
+                ctx.moveTo(x+distHorizontal, y);
+                ctx.lineTo(x+distHorizontal, y+distVertical);
+                ctx.lineTo(x, y+distVertical/2);
+                break;
+        }
+        ctx.closePath();
+        ctx.stroke();
     }
 
 
@@ -97,8 +134,8 @@ class View {
         var parcelWidth = this.canvas.width / numRowCols;
         var parcelHeight = this.canvas.height / numRowCols;
         var ctx = this.canvas.getContext('2d');
-        var texture = getTextureFromChar(texChar);
-        ctx.drawImage(texture, x*parcelWidth+1, y*parcelHeight+1, parcelWidth-2, parcelHeight-2);
+        var texture = this.getTextureFromChar(texChar);
+        ctx.drawImage(texture, x*parcelWidth+1, y*parcelHeight+1, parcelWidth-1, parcelHeight-1);
     }
 
     getTextureFromChar(texChar) {

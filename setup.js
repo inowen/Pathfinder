@@ -23,8 +23,20 @@ async function main() {
 
     // DOWN HERE, DEBUGGING
     let map = new Map2d('country_roads');
-    view.drawMap(map);
+    //view.drawMap(map);
+    view.drawPlayer(4,2,1);
+    view.drawPlayer(4,3,1);
+    view.drawPlayer(4,4,1);
 
+    var ctx = view.canvas.getContext('2d');
+    ctx.fillStyle = "rgb(255,0,0)";
+    ctx.beginPath();
+    ctx.moveTo(2,2);
+    ctx.lineTo(50,50);
+    ctx.lineTo(100,50);
+    ctx.lineTo(100,100);
+    ctx.closePath();
+    ctx.stroke();
 }
 
 
