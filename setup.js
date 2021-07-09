@@ -7,11 +7,7 @@ async function main() {
      */
 
     // Create view, wait for images to load
-    var canvas = document.getElementById('view_canvas');
-    let view = new View(canvas);
-    await view.waitTexturesLoaded();
     
-
 
 
     // Create and initialize model
@@ -22,11 +18,7 @@ async function main() {
 
 
     // DOWN HERE, DEBUGGING
-    let map = new Map2d('country_roads');
-    view.drawMap(map);
-    view.drawPlayer(4, 2, 1);
-    view.drawPlayer(4, 3, 1);
-    view.drawPlayer(4, 4, 1);
+    
     
 }
 
