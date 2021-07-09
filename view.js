@@ -1,7 +1,7 @@
 
 class View {
     constructor(parentDivId) {
-
+        this.gameState = null;
         this.p5_object = null; // p5.js object (with setup and draw functions)
 
         this.car_skin = null; // textures/character.png
@@ -17,16 +17,24 @@ class View {
         this.boat = null; // textures/port.jpg
         this.snowmobile = null; // textures/snowmobile_garage.jpg
 
+        var this_view = this;
+
         let myp5 = new p5( (p) => {
-            this.p5_object = p;
+            p.preload = function () {
+                // Load the textures
+
+                this_view.p5_object = p;
+            }
+
             p.setup = function() {
-                
+                // Create the canvas
+                p.noLoop();
             }
 
             p.draw = function() {                
-
+                // Draw the current GameState
             }
-        });
+        }, parentDivId);
     }
 
 
