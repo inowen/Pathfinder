@@ -1,8 +1,9 @@
 
 class View {
-    constructor(parentDivId) {
-        this.gameState = null;
+    constructor(parentDivId, initialGameState) {
+        this.gameState = initialGameState;
         this.p5_object = null; // p5.js object (with setup and draw functions)
+        this.canvas = null;
 
         this.car_skin = null; // textures/character.png
         this.boat_skin = null; // textures/character.png
@@ -40,7 +41,7 @@ class View {
 
             p.setup = function() {
                 // Change canvas size to parent div size somehow?
-                let canvas = p.createCanvas(1500, 900);
+                this_view.canvas = p.createCanvas(1500, 900);
                 p.noLoop();
                 // Debug: 
                 this_view.printTextures();
@@ -54,11 +55,9 @@ class View {
 
 
     drawGameState(gameState) {
-        if (gameState != null) {
-            this.drawMap(gameState.map);
-            this.drawPath(gameState.plan);
-            this.drawPlayer(gameState.x, gameState.y, gameState.orientation);
-        }   
+        this.drawMap(gameState.map);
+        this.drawPath(gameState.plan);
+        this.drawPlayer(gameState.x, gameState.y, gameState.orientation);
     }
 
 
@@ -74,7 +73,7 @@ class View {
     // (x,y) are the grid coordinates of the parcel where the player is
     // numRowsCols is the size of the map (the number of rows, also the number of colums)
     drawPlayer(parcel_x, parcel_y, orientation, numRowsCols) {
-
+        // IMPLEMENT THIS 0.2 (using triangles)
     }
 
 
@@ -83,11 +82,18 @@ class View {
     }
 
     drawGridLines(numRowsCols) {
-
+        let block_width = this.canvas.width / numRowsCols;
+        let block_height = this.canvas.height / numRowsCols;
+        console.log("Debug: W=" + block_width + ", H=" + block_height);
+        var p = this.p5_object;
+        for (var i=0; i<numRowsCols; ++i) {
+            p.line(i*block_width, 0, i*block_width, this.canvas.height);
+            p.line(0, i*block_height, this.canvas.width, i*block_height);
+        }
     }
 
     paintParcel(x, y, texChar, numRowCols) {
-
+        // IMPLEMENT THIS 0.1
     }
 
     getTextureFromChar(texChar) {
