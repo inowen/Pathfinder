@@ -20,6 +20,8 @@ async function main() {
     // DOWN HERE, DEBUGGING
     let gameState = new GameState(new Map2d("country_roads"), null, 5, 5, 1);
     let view = new View('screen', gameState);
+
+    // Change gameState (add a player thing), then refresh: tests setter, refresh, and drawing player
     
 }
 

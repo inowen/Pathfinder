@@ -40,7 +40,6 @@ class View {
             }
 
             p.setup = function() {
-                // Change canvas size to parent div size somehow?
                 this_view.canvas = p.createCanvas(1500, 900);
                 p.noLoop();
             }
@@ -51,11 +50,24 @@ class View {
         }, parentDivId);
     }
 
+    // ---------- PUBLIC ---------------------------------------------------------------
+    setGameState(gameState) {
+        this.gameState = gameState;
+    }
+
+    refresh() {
+        if (this.p5_object != null) {
+            this.p5_object.redraw();
+        }
+    }
+
+
+    // ---------- PRIVATE ---------------------------------------------------------------
 
     drawGameState(gameState) {
         this.drawMap(gameState.map);
         this.drawPath(gameState.plan);
-        this.drawPlayer(gameState.x, gameState.y, gameState.orientation);
+        this.drawPlayer(gameState.x, gameState.y, gameState.orientation, gameState.map.size);
     }
 
 
@@ -71,7 +83,42 @@ class View {
     // (x,y) are the grid coordinates of the parcel where the player is
     // numRowsCols is the size of the map (the number of rows, also the number of colums)
     drawPlayer(parcel_x, parcel_y, orientation, numRowsCols) {
-        // IMPLEMENT THIS 0.2 (using triangles)
+        let p = this.p5_object;
+        let block_width = this.canvas.width / numRowsCols;
+        let block_height = this.canvas.height / numRowsCols;
+        let real_x = parcel_x * block_width;
+        let real_y = parcel_y * block_height;
+
+        if (orientation == 0) {
+            p.triangle(real_x+block_width/2, // Upper middle
+                       real_y, real_x, real_y+block_height, // Lower left
+                       real_x+block_width, real_y+block_width // Lower right
+            );
+        }
+        else if (orientation == 1) {
+            p.triangle(real_x+block_width, real_y+block_height/2, // Right middle
+                       real_x, real_y+block_height, // Lower left
+                       real_x, real_y // Upper left
+                );
+        }
+        else if (orientation == 2) {
+            p.triangle(real_x+block_width/2, real_y+block_height, // Lower middle
+                       real_x, real_y, // Upper left
+                       real_x+block_width, real_y // Upper right
+
+            );
+        }
+        else if (orientation == 3) {
+            p.triangle(real_x, real_y+block_height/2, // Left middle
+                       real_x+block_width, real_y, // Upper right
+                       real_x+block_width, real_y+block_width // Lower right
+
+            );
+        }
+        else {
+            console.error("View#drawPlayer: Orientation not in [0,3]. Should never happen.");
+        }
+        
     }
 
 
