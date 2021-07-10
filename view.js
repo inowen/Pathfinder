@@ -28,7 +28,7 @@ class View {
 
             p.setup = function() {
                 // Create the canvas (size of the parent div?)
-                let canvas = p.createCanvas(600, 600);
+                let canvas = p.createCanvas(1500, 900);
                 p.background(0, 0, 200);
                 p.noLoop();
             }
