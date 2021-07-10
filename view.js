@@ -93,9 +93,9 @@ class View {
         var spaceSize = 4;
 
         if (orientation == 0) {
-            p.triangle(real_x+block_width/2, // Upper middle
-                       real_y, real_x + spaceSize, real_y+block_height, // Lower left
-                       real_x + block_width - spaceSize, real_y+block_width // Lower right
+            p.triangle(real_x+block_width/2, real_y, // Upper middle
+                       real_x, real_y+block_height - spaceSize, // Lower left
+                       real_x + block_width, real_y+block_height - spaceSize // Lower right
             );
         }
         else if (orientation == 1) {
@@ -106,15 +106,15 @@ class View {
         }
         else if (orientation == 2) {
             p.triangle(real_x+block_width/2, real_y+block_height, // Lower middle
-                       real_x + spaceSize, real_y, // Upper left
-                       real_x + block_width - spaceSize, real_y // Upper right
+                       real_x, real_y + spaceSize, // Upper left
+                       real_x + block_width, real_y + spaceSize // Upper right
 
             );
         }
         else if (orientation == 3) {
             p.triangle(real_x, real_y+block_height/2, // Left middle
                        real_x + block_width - spaceSize, real_y, // Upper right
-                       real_x + block_width - spaceSize, real_y+block_width // Lower right
+                       real_x + block_width - spaceSize, real_y+block_height // Lower right
 
             );
         }

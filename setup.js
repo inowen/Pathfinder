@@ -22,7 +22,9 @@ async function main() {
     let view = new View('screen', gameState);
 
     // Change gameState (add a player thing), then refresh: tests setter, refresh, and drawing player
-    
+    gameState.orientation = 3;
+    view.setGameState(gameState);
+    view.refresh();
 
     
 }
