@@ -89,29 +89,32 @@ class View {
         let real_x = parcel_x * block_width;
         let real_y = parcel_y * block_height;
 
+        p.fill(180, 0, 0);
+        var spaceSize = 4;
+
         if (orientation == 0) {
             p.triangle(real_x+block_width/2, // Upper middle
-                       real_y, real_x, real_y+block_height, // Lower left
-                       real_x+block_width, real_y+block_width // Lower right
+                       real_y, real_x + spaceSize, real_y+block_height, // Lower left
+                       real_x + block_width - spaceSize, real_y+block_width // Lower right
             );
         }
         else if (orientation == 1) {
             p.triangle(real_x+block_width, real_y+block_height/2, // Right middle
-                       real_x, real_y+block_height, // Lower left
-                       real_x, real_y // Upper left
+                       real_x + spaceSize, real_y+block_height, // Lower left
+                       real_x + spaceSize, real_y // Upper left
                 );
         }
         else if (orientation == 2) {
             p.triangle(real_x+block_width/2, real_y+block_height, // Lower middle
-                       real_x, real_y, // Upper left
-                       real_x+block_width, real_y // Upper right
+                       real_x + spaceSize, real_y, // Upper left
+                       real_x + block_width - spaceSize, real_y // Upper right
 
             );
         }
         else if (orientation == 3) {
             p.triangle(real_x, real_y+block_height/2, // Left middle
-                       real_x+block_width, real_y, // Upper right
-                       real_x+block_width, real_y+block_width // Lower right
+                       real_x + block_width - spaceSize, real_y, // Upper right
+                       real_x + block_width - spaceSize, real_y+block_width // Lower right
 
             );
         }
