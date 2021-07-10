@@ -22,22 +22,32 @@ class View {
         let myp5 = new p5( (p) => {
             p.preload = function () {
                 // Load the textures
+                this_view.car_skin = p.loadImage("textures/character.png");
+                this_view.boat_skin = p.loadImage("textures/character.png");
+                this_view.sm_skin = p.loadImage("textures/character.png");
+                this_view.snow = p.loadImage("textures/snow.png");
+                this_view.road = p.loadImage("textures/road.png");
+                this_view.floor = p.loadImage("textures/grass.png");
+                this_view.cliff = p.loadImage("textures/death.jpg");
+                this_view.water = p.loadImage("textures/water.jpg");
+                this_view.obstacle = p.loadImage("textures/brick.jpg");
+                this_view.car = p.loadImage("textures/garage.jpg");
+                this_view.boat = p.loadImage("textures/port.jpg");
+                this_view.snowmobile = p.loadImage("textures/snowmobile_garage.jpg");
 
                 this_view.p5_object = p;
             }
 
             p.setup = function() {
-                // Create the canvas (size of the parent div?)
+                // Change canvas size to parent div size somehow?
                 let canvas = p.createCanvas(1500, 900);
-                p.background(0, 0, 200);
                 p.noLoop();
+                // Debug: 
+                this_view.printTextures();
             }
 
-            p.draw = function() {                
-                // Draw the current GameState
+            p.draw = function() {
                 this_view.drawGameState(this_view.gameState);
-                p.fill(0);
-                p.rect(100, 100, 500, 500);
             }
         }, parentDivId);
     }
