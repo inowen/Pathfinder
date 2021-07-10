@@ -18,7 +18,7 @@ async function main() {
 
 
     // DOWN HERE, DEBUGGING
-    let view = new View('x');
+    let view = new View('screen');
     
     
 }

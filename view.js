@@ -27,21 +27,28 @@ class View {
             }
 
             p.setup = function() {
-                // Create the canvas
+                // Create the canvas (size of the parent div?)
+                let canvas = p.createCanvas(600, 600);
+                p.background(0, 0, 200);
                 p.noLoop();
             }
 
             p.draw = function() {                
                 // Draw the current GameState
+                this_view.drawGameState(this_view.gameState);
+                p.fill(0);
+                p.rect(100, 100, 500, 500);
             }
         }, parentDivId);
     }
 
 
     drawGameState(gameState) {
-        this.drawMap(gameState.map);
-        this.drawPath(gameState.plan);
-        this.drawPlayer(gameState.x, gameState.y, gameState.orientation);
+        if (gameState != null) {
+            this.drawMap(gameState.map);
+            this.drawPath(gameState.plan);
+            this.drawPlayer(gameState.x, gameState.y, gameState.orientation);
+        }   
     }
 
 
