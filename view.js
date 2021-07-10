@@ -43,8 +43,6 @@ class View {
                 // Change canvas size to parent div size somehow?
                 this_view.canvas = p.createCanvas(1500, 900);
                 p.noLoop();
-                // Debug: 
-                this_view.printTextures();
             }
 
             p.draw = function() {
@@ -62,12 +60,12 @@ class View {
 
 
     drawMap(map2d) {
-        this.drawGridLines(map2d.size);
         for (var f=0; f<map2d.size; ++f) {
             for (var c=0; c<map2d.size; ++c) {
                 this.paintParcel(c, f, map2d.get(c, f), map2d.size);
             }
         }
+        this.drawGridLines(map2d.size);
     }
 
     // (x,y) are the grid coordinates of the parcel where the player is
@@ -92,12 +90,15 @@ class View {
         }
     }
 
-    paintParcel(x, y, texChar, numRowCols) {
-        // IMPLEMENT THIS 0.1
+    paintParcel(x, y, texChar, numRowsCols) {
+        let block_width = this.canvas.width / numRowsCols;
+        let block_height = this.canvas.height / numRowsCols;
+        var p = this.p5_object;
+        var texture = this.getTextureFromChar(texChar);
+        p.image(texture, x*block_width, y*block_height, block_width, block_height);
     }
 
     getTextureFromChar(texChar) {
-        // snow, road, cliff, floor, water, obstacle, car, boat, snowmobile
         switch(texChar) {
             case 'c':
                 return this.car;
