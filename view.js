@@ -74,7 +74,7 @@ class View {
     drawMap(map2d) {
         for (var f=0; f<map2d.size; ++f) {
             for (var c=0; c<map2d.size; ++c) {
-                this.paintParcel(c, f, map2d.get(c, f), map2d.size);
+                this.paintParcel(f, c, map2d.get(c, f), map2d.size);
             }
         }
         this.drawGridLines(map2d.size);
