@@ -137,9 +137,11 @@ class View {
             var p = this.p5_object;
             let x = placement.x * block_width + block_width/2;
             let y = placement.y * block_height + block_height/2;
-            let diameter = block_height/4;
+            let diameter_inner = block_height/4;
+            p.fill(255, 255, 255);
+            p.circle(x, y, diameter_inner*2);
             p.fill(0, 0, 200);
-            p.circle(x, y, diameter);
+            p.circle(x, y, diameter_inner);
         }
     }
 
