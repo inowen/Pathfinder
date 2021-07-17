@@ -26,6 +26,18 @@ async function main() {
     view.setGameState(gameState);
     view.refresh();
 
+    plan = [];
+    plan.push(new Placement(1, 1, 0));
+    plan.push(new Placement(1,2, 0));
+    plan.push(new Placement(2, 2, 3));
+    plan.push(new Placement(2, 3, 2));
+    plan.push(new Placement(3, 3, 1));
+    plan.push(new Placement(4, 3, 1));
+
+    gameState.plan = plan;
+    view.setGameState(gameState);
+    view.refresh();
+
     
 }
 

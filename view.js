@@ -66,7 +66,9 @@ class View {
 
     drawGameState(gameState) {
         this.drawMap(gameState.map);
-        this.drawPath(gameState.plan);
+        if (gameState.plan != null) {
+            this.drawPlan(gameState.plan, gameState.map.size);
+        }
         this.drawPlayer(gameState.x, gameState.y, gameState.orientation, gameState.map.size);
     }
 
@@ -124,15 +126,26 @@ class View {
         
     }
 
-
-    drawPath(actionsArray) {
-
+    // A plan consists of an array of Placement(s).
+    // Drawing a plan = drawing a series of points where the player would go through.
+    // numRowCols: The number of rows/columns in the view (depends on the map)
+    drawPlan(plan, numRowCols) {
+        let block_width = this.canvas.width / numRowCols;
+        let block_height = this.canvas.height / numRowCols;
+        for (var i=0; i<plan.length; ++i) {
+            var placement = plan[i];
+            var p = this.p5_object;
+            let x = placement.x * block_width + block_width/2;
+            let y = placement.y * block_height + block_height/2;
+            let diameter = block_height/4;
+            p.fill(0, 0, 200);
+            p.circle(x, y, diameter);
+        }
     }
 
     drawGridLines(numRowsCols) {
         let block_width = this.canvas.width / numRowsCols;
         let block_height = this.canvas.height / numRowsCols;
-        console.log("Debug: W=" + block_width + ", H=" + block_height);
         var p = this.p5_object;
         for (var i=0; i<numRowsCols; ++i) {
             p.line(i*block_width, 0, i*block_width, this.canvas.height);
