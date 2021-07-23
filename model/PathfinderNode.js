@@ -17,4 +17,12 @@ class PathfinderNode {
         this.combined_cost = combined_cost;
         this.parent = parent;
     }
+
+
+    // Btw, the goal node is required to assign the correct value for combined_cost
+    // (using a Manhattan distance heuristic)
+    generateAllChildren(goal_node, map) {
+        // To-do: Add some kind of information about the cost of each action on each kind of cell.
+        //        Make a list of children, adapting their cost, parent, placement, vehicle (if necessary).
+    }
 }
