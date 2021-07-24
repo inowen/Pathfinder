@@ -56,12 +56,44 @@ class PathfinderNode {
         return children;
     }
 
+    
     getCostTurn(terrain_char) {
-
+        if (terrain_char == 'F') {
+            return 10;
+        }
+        if (terrain_char == 'c' || terrain_char == 'b' || terrain_char == 's') {
+            return 5;
+        }
+        if (terrain_char == 'W') {
+            if (this.vehicle == 'b') {
+                return 5;
+            }
+            else {
+                return 100;
+            }
+        }
+        if (terrain_char == 'R') {
+            if (this.vehicle == 'c') {
+                return 1;
+            }
+            else {
+                return 15;
+            }
+        }
+        if (terrain_char == 'S') {
+            if (this.vehicle == 's') {
+                return 5;
+            }
+            else {
+                return 80;
+            }
+        }
+        console.error("Should never be getting here!");
+        return 50;
     }
 
     getCostForward(terrain_char) {
-
+        return this.getCostTurn(terrain_char); // For now both actions cost the same.
     }
 
 
