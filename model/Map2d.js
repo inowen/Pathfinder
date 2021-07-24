@@ -28,26 +28,26 @@ class Map2d {
         return new Array(this.matrix);
     }
 
-    isWalkable(x, y) {
-        return !this.isObstacle(x,y);
+    isWalkable(row, col) {
+        return !this.isObstacle(row,col);
     }
 
-    isObstacle(x, y) {
-        let v = this.matrix[x][y];
+    isObstacle(row, col) {
+        let v = this.matrix[row][col];
         return v=='C' || v=='O';
     }
 
-    isVehicle(x, y) {
-        let v = this.matrix[x][y];
+    isVehicle(row, col) {
+        let v = this.matrix[row][col];
         return v=='s' || v=='c' || v=='b';
     }
 
-    isInsideMap(x, y) {
-        return x>=0 && y>=0 && x<this.size && y<this.size;
+    isInsideMap(row, col) {
+        return row>=0 && col>=0 && row<this.size && col<this.size;
     }
 
-    get(x, y) {
-        return this.matrix[x][y];
+    get(row, col) {
+        return this.matrix[row][col];
     }
 
 

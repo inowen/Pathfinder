@@ -3,9 +3,9 @@
  */
 
 class Placement {
-    constructor(x, y, orientation) {
-        this.x = x;
-        this.y = y;
+    constructor(row, col, orientation) {
+        this.row = row;
+        this.col = col;
         this.orientation = orientation;
     }
 }

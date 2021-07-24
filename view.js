@@ -69,20 +69,20 @@ class View {
         if (gameState.plan != null) {
             this.drawPlan(gameState.plan, gameState.map.size);
         }
-        this.drawPlayer(gameState.x, gameState.y, gameState.orientation, gameState.map.size);
+        this.drawPlayer(gameState.col, gameState.row, gameState.orientation, gameState.map.size);
     }
 
 
     drawMap(map2d) {
         for (var f=0; f<map2d.size; ++f) {
             for (var c=0; c<map2d.size; ++c) {
-                this.paintParcel(f, c, map2d.get(c, f), map2d.size);
+                this.paintParcel(c, f, map2d.get(f,c), map2d.size);
             }
         }
         this.drawGridLines(map2d.size);
     }
 
-    // (x,y) are the grid coordinates of the parcel where the player is
+    // (x,y) are the grid coordinates of the parcel where the player is (transposed row,col)
     // numRowsCols is the size of the map (the number of rows, also the number of colums)
     drawPlayer(parcel_x, parcel_y, orientation, numRowsCols) {
         let p = this.p5_object;
@@ -135,8 +135,8 @@ class View {
         for (var i=0; i<plan.length; ++i) {
             var placement = plan[i];
             var p = this.p5_object;
-            let x = placement.x * block_width + block_width/2;
-            let y = placement.y * block_height + block_height/2;
+            let x = placement.col * block_width + block_width/2;
+            let y = placement.row * block_height + block_height/2;
             let diameter_inner = block_height/4;
             p.fill(255, 255, 255);
             p.circle(x, y, diameter_inner*2);

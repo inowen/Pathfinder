@@ -44,7 +44,7 @@ async function main() {
 
     // Create a PathfinderNode, generate all children, and print them to console.
     var goalNode = new PathfinderNode(new Placement(1, 11, 2), 'c', 0, 0, null);
-    var pathfinderNode = new PathfinderNode(new Placement(1,1,0), 'c', 0, 10, null);
+    var pathfinderNode = new PathfinderNode(new Placement(4,5,1), 'c', 0, 10, null);
     var arr = pathfinderNode.generateAllChildren(goalNode, country_roads);
     console.log(arr);
 

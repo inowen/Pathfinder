@@ -7,11 +7,11 @@
  */
 
 class GameState {
-    constructor(map, plan, x, y, orientation) {
+    constructor(map, plan, row, col, orientation) {
         this.map = map;
         this.plan = plan;
-        this.x = x;
-        this.y = y;
+        this.row = row;
+        this.col = col;
         this.orientation = orientation;
     }
 }

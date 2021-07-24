@@ -28,7 +28,7 @@ class PathfinderNode {
         var child_turn_left = this.getCopy(this);
         child_turn_left.placement.orientation = (child_turn_left.placement.orientation + 3) % 4;
         child_turn_left.parent = this;
-        child_turn_left.cost += this.getCostTurn(map.get(child_turn_left.placement.x,child_turn_left.placement.y));
+        child_turn_left.cost += this.getCostTurn(map.get(child_turn_left.placement.row,child_turn_left.placement.col));
         child_turn_left.combined_cost = child_turn_left.cost + manhattanDistance(child_turn_left, goal_node);
         children.push(child_turn_left);
 
@@ -36,24 +36,28 @@ class PathfinderNode {
         var child_turn_right = this.getCopy(this);
         child_turn_right.placement.orientation = (child_turn_right.placement.orientation + 1) % 4;
         child_turn_right.parent = this;
-        child_turn_right.cost += this.getCostTurn(map.get(child_turn_right.placement.x, child_turn_right.placement.y));
+        child_turn_right.cost += this.getCostTurn(map.get(child_turn_right.placement.row, child_turn_right.placement.col));
         child_turn_right.combined_cost = child_turn_right.cost + manhattanDistance(child_turn_right, goal_node);
         children.push(child_turn_right);
 
         // GO FORWARD
         var child_go_forward = this.getCopy(this);
         child_go_forward.placement = forwardPlacement(child_go_forward.placement);
-        let x = child_go_forward.placement.x;
-        let y = child_go_forward.placement.y;
-        if (map.isInsideMap(x, y)) {
-            if (map.isWalkable(x,y)) {
+        let row = child_go_forward.placement.row;
+        let col = child_go_forward.placement.col;
+        if (map.isInsideMap(row, col)) {
+            if (map.isWalkable(row,col)) {
                 child_go_forward.parent = this;
-                child_go_forward.cost += this.getCostForward(map.get(x,y));
+                child_go_forward.cost += this.getCostForward(map.get(row,col));
                 child_go_forward.combined_cost = child_go_forward.cost + manhattanDistance(child_turn_right, goal_node);
 
-                if (map.isVehicle(x,y)) {
-                    child_go_forward.vehicle = map.get(x,y);
+                console.log("Debug: Child go forward: row="+row + " col=" + col + " is char=" + map.get(row,col));
+                if (map.isVehicle(row,col)) {
+                    console.log("Debug: Is vehicle");
+                    child_go_forward.vehicle = map.get(row,col);
+                    console.log("Debug: Setting vehicle to " + child_go_forward.vehicle);
                 }
+                console.log("Debug: Pushing go forward child");
                 children.push(child_go_forward);
             }
         }
@@ -104,7 +108,7 @@ class PathfinderNode {
 
     getCopy(other_node) {
         var copyPlacement = new Placement(
-            other_node.placement.x, other_node.placement.y, other_node.placement.orientation
+            other_node.placement.row, other_node.placement.col, other_node.placement.orientation
         );
         var copy = new PathfinderNode(
             copyPlacement, other_node.vehicle, other_node.cost, other_node.combined_cost, other_node.parent
@@ -115,29 +119,29 @@ class PathfinderNode {
 
 
 function manhattanDistance(node_a, node_b) {
-    let x_a = node_a.placement.x;
-    let y_a = node_a.placement.y;
-    let x_b = node_b.placement.x;
-    let y_b = node_b.placement.y;
-    let diff_x = x_b - x_a;
-    let diff_y = y_b - y_a;
-    return Math.abs(diff_x) + Math.abs(diff_y);
+    let row_a = node_a.placement.row;
+    let col_a = node_a.placement.col;
+    let row_b = node_b.placement.row;
+    let col_b = node_b.placement.col;
+    let diff_row = row_b - row_a;
+    let diff_col = col_b - col_a;
+    return Math.abs(diff_row) + Math.abs(diff_col);
 }
 
 
 function forwardPlacement(placement) {
-    var ret_placement = new Placement(placement.x, placement.y, placement.orientation);
+    var ret_placement = new Placement(placement.row, placement.col, placement.orientation);
     if (placement.orientation == 0) {
-        ret_placement.y--;
+        ret_placement.row--;
     }
     else if (placement.orientation == 1) {
-        ret_placement.x++;
+        ret_placement.col++;
     }
     else if (placement.orientation == 2) {
-        ret_placement.y++;
+        ret_placement.row++;
     }
     else if (placement.orientation ==3) {
-        ret_placement.x--;
+        ret_placement.col--;
     }
     return ret_placement;
 }
