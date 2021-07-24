@@ -36,7 +36,7 @@ class PathfinderNode {
         var child_turn_right = this.getCopy(this);
         child_turn_right.placement.orientation = (child_turn_right.placement.orientation + 1) % 4;
         child_turn_right.parent = this;
-        child_turn_right.cost = this.getCostTurn(map.get(child_turn_right.placement.x, child_turne_right.placement.y));
+        child_turn_right.cost += this.getCostTurn(map.get(child_turn_right.placement.x, child_turn_right.placement.y));
         child_turn_right.combined_cost = child_turn_right.cost + manhattanDistance(child_turn_right, goal_node);
         children.push(child_turn_right);
 
