@@ -40,23 +40,28 @@ class PathfinderNode {
         child_turn_right.combined_cost = child_turn_right.cost + manhattanDistance(child_turn_right, goal_node);
         children.push(child_turn_right);
 
-        // GO FORWARD (has to check if there's a vehicle to take there)
+        // GO FORWARD
         var child_go_forward = this.getCopy(this);
-        // Depending on orientation, change the coordinates accordingly.
+        child_go_forward.placement = forwardPlacement(child_go_forward.placement);
+        let x = child_go_forward.placement.x;
+        let y = child_go_forward.placement.y;
+        if (map.isInsideMap(x, y)) {
+            if (map.isWalkable(x,y)) {
+                child_go_forward.parent = this;
+                child_go_forward.cost += this.getCostForward(map.get(x,y));
+                child_go_forward.combined_cost = child_go_forward.cost + manhattanDistance(child_turn_right, goal_node);
 
-        // Then check if that Placement is inside the map, and if it's walkable. In that case, add it.
-        // (isInsideMap, isWalkable from map methods)
-        
-
-        // To-do: Add some kind of information about the cost of each action on each kind of cell.
-        //        Make a list of children, adapting their cost, parent, placement, vehicle (if necessary).
-
-
+                if (map.isVehicle(x,y)) {
+                    child_go_forward.vehicle = map.get(x,y);
+                }
+                children.push(child_go_forward);
+            }
+        }
 
         return children;
     }
 
-    
+
     getCostTurn(terrain_char) {
         if (terrain_char == 'F') {
             return 10;
@@ -116,5 +121,23 @@ function manhattanDistance(node_a, node_b) {
     let y_b = node_b.placement.y;
     let diff_x = x_b - x_a;
     let diff_y = y_b - y_a;
-    return Math.sqrt(diff_x*diff_x + diff_y*diff_y);
+    return Math.abs(diff_x) + Math.abs(diff_y);
+}
+
+
+function forwardPlacement(placement) {
+    var ret_placement = new Placement(placement.x, placement.y, placement.orientation);
+    if (placement.orientation == 0) {
+        ret_placement.y--;
+    }
+    else if (placement.orientation == 1) {
+        ret_placement.x++;
+    }
+    else if (placement.orientation == 2) {
+        ret_placement.y++;
+    }
+    else if (placement.orientation ==3) {
+        ret_placement.x--;
+    }
+    return ret_placement;
 }
