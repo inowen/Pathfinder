@@ -48,7 +48,7 @@ class PathfinderNode {
         if (map.isInsideMap(row, col)) {
             if (map.isWalkable(row,col)) {
                 child_go_forward.parent = this;
-                child_go_forward.cost += this.getCostForward(map.get(row,col));
+                child_go_forward.cost += this.getCostForward(map.get(this.placement.row, this.placement.col));
                 child_go_forward.combined_cost = child_go_forward.cost + manhattanDistance(child_turn_right, goal_node);
 
                 console.log("Debug: Child go forward: row="+row + " col=" + col + " is char=" + map.get(row,col));
