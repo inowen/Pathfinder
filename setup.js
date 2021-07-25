@@ -44,8 +44,8 @@ async function main() {
 
 
     // Create a PathfinderNode, generate all children, and print them to console.
-    var goalNode = new PathfinderNode(new Placement(1, 1, 1), 'c', 0, 0, null);
-    var pathfinderNode = new PathfinderNode(new Placement(1, 5, 1), 'b', 0, 10, null);
+    var goalNode = new PathfinderNode(new Placement(48, 1, 1), 'c', 0, 0, null);
+    var pathfinderNode = new PathfinderNode(new Placement(1, 1, 1), 'b', 0, 10, null);
 
     var algs = new Algorithms();
     var plan = algs['bfs'](pathfinderNode, goalNode, country_roads);

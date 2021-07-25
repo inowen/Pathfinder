@@ -53,7 +53,7 @@ class PathfinderNode {
             if (map.isWalkable(row,col)) {
                 child_go_forward.parent = this;
                 child_go_forward.cost += this.getCostForward(map.get(this.placement.row, this.placement.col));
-                child_go_forward.combined_cost = child_go_forward.cost + manhattanDistance(child_turn_right, goal_node);
+                child_go_forward.combined_cost = child_go_forward.cost + manhattanDistance(child_go_forward, goal_node);
 
                 if (map.isVehicle(row,col)) {
                     child_go_forward.vehicle = map.get(row,col);
@@ -97,7 +97,7 @@ class PathfinderNode {
                 return 80;
             }
         }
-        console.error("Should never be getting here!");
+        console.error("Should never be getting here! Char=" + terrain_char);
         return 50;
     }
 

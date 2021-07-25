@@ -34,7 +34,7 @@ class Map2d {
 
     isObstacle(row, col) {
         let v = this.matrix[row][col];
-        return v=='C' || v=='O';
+        return (v=='C' || v=='O');
     }
 
     isVehicle(row, col) {
