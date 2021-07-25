@@ -23,6 +23,7 @@ async function main() {
     let view = new View('screen', gameState);
 
     // Change gameState (add a player thing), then refresh: tests setter, refresh, and drawing player
+    /*
     gameState.orientation = 3;
     view.setGameState(gameState);
     view.refresh();
@@ -39,13 +40,17 @@ async function main() {
     gameState.plan = plan;
     view.setGameState(gameState);
     view.refresh();
+    */
 
 
     // Create a PathfinderNode, generate all children, and print them to console.
-    var goalNode = new PathfinderNode(new Placement(1, 11, 2), 'c', 0, 0, null);
-    var pathfinderNode = new PathfinderNode(new Placement(20, 2, 0), 'b', 0, 10, null);
-    var arr = pathfinderNode.generateAllChildren(goalNode, country_roads);
-    console.log(arr);
+    var goalNode = new PathfinderNode(new Placement(1, 1, 1), 'c', 0, 0, null);
+    var pathfinderNode = new PathfinderNode(new Placement(1, 5, 1), 'b', 0, 10, null);
+
+    var algs = new Algorithms();
+    var plan = algs['bfs'](pathfinderNode, goalNode, country_roads);
+    console.log("Plan: ");
+    console.log(plan);
 
     
 }

@@ -35,20 +35,19 @@ function PathfindBFS(root_node, goal_node, map) {
         closedSet.add(current_node);
         if (current_node.placement.row==goal_node.placement.row
             && current_node.placement.col==goal_node.placement.col
-            && current_node.placement.orientation==goal_node.placement.orientation
         ) {
             path_found = true;
         }
         else {
-            var all_children = current_node.generateAllChildren(goal_node, map);ç
+            var all_children = current_node.generateAllChildren(goal_node, map);
             for (var i=0; i<all_children.length; ++i) {
                 if (!closedSet.has(all_children[i])) {
-                    closedSet.add(all_children[i]);
+                    queue.push(all_children[i]);
                 }
             }
         }
     }
-    
+
     if (path_found) {
         return linkedListToPlan(current_node, root_node);
     }
