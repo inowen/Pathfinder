@@ -18,6 +18,10 @@ class PathfinderNode {
         this.parent = parent;
     }
 
+    getIdentityString() {
+        return this.placement.row + "_" + this.placement.col + "_" + this.placement.orientation + "_" + this.vehicle;
+    }
+
 
     // Btw, the goal node is required to assign the correct value for combined_cost
     // (using a Manhattan distance heuristic)
