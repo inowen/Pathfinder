@@ -19,15 +19,28 @@
 
 
 class Agent {
-    constructor(algorithm_name) {
+    constructor(algorithm_name, map) {
         let algos = new Algorithms(); // Reference algorithms.js before Agent.js
         this.algorithm = algos[algorithm_name];
+        this.hasPlan = false;
         this.plan = new Array(); // Array of Placement
+        this.map = map;
     }
 
 
-    think() {
-        // Use the plan or call this.algorithm to make a plan, return a Placement
-        return null;
+    think(starting_node, goal_node) {
+        // If no plan, make one calling pathfinder
+        if (!this.hasPlan) {
+            // Create starting node, goal node, (and map?)
+            this.plan = this.algorithm(starting_node, goal_node, map);
+        }
+
+        // Return the first placement in the plan
+        var nextPlacement = null;
+        if (this.hasPlan && this.plan.length>0) {
+            nextPlacement = this.plan.shift;
+        }
+
+        return nextPlacement;
     }
 }

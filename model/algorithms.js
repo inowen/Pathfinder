@@ -5,7 +5,6 @@
  */
 
 class Algorithms {
-
     // Field names ought to be: astar, dfs, bfs, it_deepening, greedy
     constructor() {
         this.astar = PathfindAstar;
@@ -61,6 +60,20 @@ function PathfindIterativeDeepening(root_node, goal_node, map) {
 function PathfindGreedy(root_node, goal_node, map) {
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // ----------------------------------------------------------------------------
