@@ -56,6 +56,12 @@ async function main() {
     console.log(nextPlacement);
 
     // Now draw the plan!
+    gameState.plan = plan;
+    gameState.row = nextPlacement.row;
+    gameState.col = nextPlacement.col;
+    gameState.orientation = nextPlacement.orientation;
+    view.setGameState(gameState);
+    view.refresh();
 
     
 }
