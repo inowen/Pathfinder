@@ -47,10 +47,15 @@ async function main() {
     var goalNode = new PathfinderNode(new Placement(48, 1, 1), 'c', 0, 0, null);
     var pathfinderNode = new PathfinderNode(new Placement(1, 1, 1), 'b', 0, 10, null);
 
-    var algs = new Algorithms();
-    var plan = algs['bfs'](pathfinderNode, goalNode, country_roads);
+    var agent = new Agent('bfs', country_roads);
+    var nextPlacement = agent.think(pathfinderNode, goalNode);
+    var plan = agent.getStoredPlan();
     console.log("Plan: ");
     console.log(plan);
+    console.log("Next placement:" );
+    console.log(nextPlacement);
+
+    // Now draw the plan!
 
     
 }
