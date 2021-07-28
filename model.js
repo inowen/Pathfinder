@@ -9,7 +9,9 @@ class Model {
         this.agent = new Agent(algorithm_name, this.map);
 
         // Idea: Initially position the player on the first square available from top left,
-        //       and the goal on the most bottom-right position?
+        //       and the goal on the most bottom-right position? First square that isn't .isObstacle(x,y)
+        var playerPlacement = this.getFirstWalkableTopLeft();
+        var goalPlacement = this.getFirstWalkableBottomRight();
 
         this.gameState = new GameState(this.map, this.agent.getStoredPlan(), playerPlacement, goalPlacement);
 
@@ -29,5 +31,30 @@ class Model {
 
     getGameState() {
         return null;
+    }
+
+
+    getFirstWalkableTopLeft() {
+        var map = this.map;
+        for (var row=0; row<map.size; ++row) {
+            for (var col=0; col<map.size; ++col) {
+                if (map.isWalkable(row,col)) {
+                    return new Placement(row, col, 0);
+                }
+            }
+        }
+        return new Placement(1, 1, 0);
+    }
+
+    getFirstWalkableBottomRight() {
+        var map = this.map;
+        for (var row=map.size-1; row>=0; --row) {
+            for (var col=map.size-1; col>=0; --col) {
+                if (map.isWalkable(row, col)) {
+                    return new Placement(row, col, 0);
+                }
+            }
+        }
+        return new Placement(map.size-1, map.size-1);
     }
 }
