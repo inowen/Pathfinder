@@ -4,6 +4,10 @@
  */
 
 
+/**
+ * View and Model have to be set to use the Controller.
+ * Get an instance with new to use the controller.
+ */
 class Controller {
     // Use new to get the instance each time.
     constructor() {
@@ -15,6 +19,22 @@ class Controller {
         // Initialization
     }
 
+    setView(view) {
+        this.view = view;
+    }
+
+    setModel(model) {
+        this.model = model;
+    }
+
+    // Advances the model one step.
+    // Refreshes the view.
+    step() {
+        this.model.step();
+        this.view.setGameState(this.model.getGameState());
+        this.view.refresh();
+    }
+
 
     // This is a singleton. The initialization is started from setup.js
 
@@ -24,3 +44,4 @@ class Controller {
     //      use the controller singleton.
 
 }
+

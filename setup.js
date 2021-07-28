@@ -24,8 +24,15 @@ async function main() {
     view.refresh();
 
     // Start controller, pass references to view and model
+    var controller = new Controller();
+    controller.setModel(model);
+    controller.setView(view);
 
     // Add the callbacks to the html elements
+    var step_button = document.getElementById("step_btn");
+    step_button.onclick = function() {
+        controller.step();
+    }
 
 }
 
