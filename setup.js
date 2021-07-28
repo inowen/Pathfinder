@@ -7,7 +7,6 @@ async function main() {
      */
 
     // Create view, wait for images to load
-    
 
 
     // Create and initialize model
@@ -17,12 +16,18 @@ async function main() {
     // Add the callbacks to the html elements
 
 
-    // DOWN HERE, DEBUGGINGç
+    // DOWN HERE, DEBUGGING
     let country_roads = new Map2d("country_roads");
     let gameState = new GameState(country_roads, null, 18, 2, 3);
-    let view = new View('screen', gameState, function(mouseEvent) {
-        console.log(mouseEvent);
-    });
+    let view = new View('screen', gameState, null);
+
+    let model = new Model("bfs", "country_roads");
+    view.setGameState(model.getGameState());
+    view.refresh();
+
+    model.step();
+    view.setGameState(model.getGameState());
+    view.refresh();
 
     // Change gameState (add a player thing), then refresh: tests setter, refresh, and drawing player
     /*
@@ -42,13 +47,12 @@ async function main() {
     gameState.plan = plan;
     view.setGameState(gameState);
     view.refresh();
-    */
-
-
+    
+    
     // Create a PathfinderNode, generate all children, and print them to console.
     var goalNode = new PathfinderNode(new Placement(48, 1, 1), 'c', 0, 0, null);
     var pathfinderNode = new PathfinderNode(new Placement(1, 1, 1), 'b', 0, 10, null);
-
+    
     var agent = new Agent('bfs', country_roads);
     var nextPlacement = agent.think(pathfinderNode, goalNode);
     var plan = agent.getStoredPlan();
@@ -56,13 +60,14 @@ async function main() {
     console.log(plan);
     console.log("Next placement:" );
     console.log(nextPlacement);
-
+    
     // Now draw the plan!
     gameState.plan = plan;
     gameState.playerPlacement = nextPlacement;
     view.setGameState(gameState);
     view.refresh();
-
+    */
+    
     
 }
 

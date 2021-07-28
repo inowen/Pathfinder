@@ -29,12 +29,21 @@ class Model {
      * It takes an action and updates the internally maintained GameState.
      */
     step() {
-        // Should get the next action from the Agent,
+        // Get the next action from the Agent.
+        var start_node = new PathfinderNode(this.gameState.playerPlacement, this.gameState.vehicle, 0, 0, null);
+        var goal_node = new PathfinderNode(this.gameState.goalPlacement, 'x', 0, 0, null);
+        var nextPlacement = this.agent.think(start_node, goal_node);
         // and update the GameState accordingly.
+        this.gameState.placement = nextPlacement;
+        this.gameState.plan = this.agent.getStoredPlan();
+        var pos = this.gameState.placement;
+        if (this.map.isVehicle(pos.row, pos.col)) {
+            this.gameState.vehicle = this.map.get(pos.row, pos.col);
+        }
     }
 
     getGameState() {
-        return null;
+        return this.gameState;
     }
 
     // This should also reset the algorithms somehow... So interaction with the Agent
