@@ -7,11 +7,10 @@
  */
 
 class GameState {
-    constructor(map, plan, row, col, orientation) {
+    constructor(map, plan, playerPlacement, goalPlacement) {
         this.map = map;
         this.plan = plan;
-        this.row = row;
-        this.col = col;
-        this.orientation = orientation;
+        this.playerPlacement = playerPlacement;
+        this.goalPlacement = goalPlacement;
     }
 }

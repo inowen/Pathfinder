@@ -69,7 +69,8 @@ class View {
         if (gameState.plan != null) {
             this.drawPlan(gameState.plan, gameState.map.size);
         }
-        this.drawPlayer(gameState.col, gameState.row, gameState.orientation, gameState.map.size);
+        this.drawPlayer(gameState.playerPlacement.col, gameState.playerPlacement.row, 
+                            gameState.playerPlacement.orientation, gameState.map.size);
     }
 
 
