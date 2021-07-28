@@ -11,6 +11,7 @@ async function main() {
     var algorithm_name = params.get('algorithm');
     var map_name = params.get('map');
 
+    // For debugging (DELETE LINE)
     console.log("Algorithm: " + algorithm_name + " Map: " + map_name);
 
     // Create view, wait for images to load

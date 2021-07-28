@@ -34,9 +34,9 @@ class Model {
         var goal_node = new PathfinderNode(this.gameState.goalPlacement, 'x', 0, 0, null);
         var nextPlacement = this.agent.think(start_node, goal_node);
         // and update the GameState accordingly.
-        this.gameState.placement = nextPlacement;
+        this.gameState.playerPlacement = nextPlacement;
         this.gameState.plan = this.agent.getStoredPlan();
-        var pos = this.gameState.placement;
+        var pos = this.gameState.playerPlacement;
         if (this.map.isVehicle(pos.row, pos.col)) {
             this.gameState.vehicle = this.map.get(pos.row, pos.col);
         }
