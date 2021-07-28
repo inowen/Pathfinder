@@ -6,28 +6,27 @@ async function main() {
      * (the controller is a singleton).
      */
 
-    // Create view, wait for images to load
+    // Parse arguments
+    const params = new URLSearchParams(window.location.search);
+    var algorithm_name = params.get('algorithm');
+    var map_name = params.get('map');
 
+    console.log("Algorithm: " + algorithm_name + " Map: " + map_name);
+
+    // Create view, wait for images to load
+    let map = new Map2d(map_name);
+    let gameState = new GameState(map, null, new Placement(1,1,1), new Placement(1,1,1));
+    var view = new View('screen', gameState, null);
 
     // Create and initialize model
+    var model = new Model(algorithm_name, map_name);
+    view.setGameState(model.getGameState());
+    view.refresh();
 
     // Start controller, pass references to view and model
 
     // Add the callbacks to the html elements
 
-
-    // DOWN HERE, DEBUGGING
-    let country_roads = new Map2d("country_roads");
-    let gameState = new GameState(country_roads, null, 18, 2, 3);
-    let view = new View('screen', gameState, null);
-
-    let model = new Model("bfs", "country_roads");
-    view.setGameState(model.getGameState());
-    view.refresh();
-
-    model.step();
-    view.setGameState(model.getGameState());
-    view.refresh();
 }
 
 
