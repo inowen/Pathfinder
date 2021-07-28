@@ -1,6 +1,6 @@
 
 class View {
-    constructor(parentDivId, initialGameState) {
+    constructor(parentDivId, initialGameState, mousepressCallback) {
         this.gameState = initialGameState;
         this.p5_object = null; // p5.js object (with setup and draw functions)
         this.canvas = null;
@@ -37,16 +37,23 @@ class View {
                 this_view.snowmobile = p.loadImage("textures/snowmobile_garage.jpg");
 
                 this_view.p5_object = p;
-            }
+            };
 
             p.setup = function() {
                 this_view.canvas = p.createCanvas(1500, 900);
                 p.noLoop();
-            }
+            };
 
             p.draw = function() {
                 this_view.drawGameState(this_view.gameState);
-            }
+            };
+
+            // The event that it takes is a MouseEvent
+            p.mousePressed = function(event) {
+                if (mousepressCallback != null) {
+                    mousepressCallback(event);
+                }
+            };
         }, parentDivId);
     }
 

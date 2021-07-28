@@ -20,7 +20,9 @@ async function main() {
     // DOWN HERE, DEBUGGINGç
     let country_roads = new Map2d("country_roads");
     let gameState = new GameState(country_roads, null, 18, 2, 3);
-    let view = new View('screen', gameState);
+    let view = new View('screen', gameState, function(mouseEvent) {
+        console.log(mouseEvent);
+    });
 
     // Change gameState (add a player thing), then refresh: tests setter, refresh, and drawing player
     /*
@@ -57,9 +59,7 @@ async function main() {
 
     // Now draw the plan!
     gameState.plan = plan;
-    gameState.row = nextPlacement.row;
-    gameState.col = nextPlacement.col;
-    gameState.orientation = nextPlacement.orientation;
+    gameState.playerPlacement = nextPlacement;
     view.setGameState(gameState);
     view.refresh();
 
