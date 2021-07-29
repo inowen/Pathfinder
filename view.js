@@ -78,6 +78,24 @@ class View {
         }
         this.drawPlayer(gameState.playerPlacement.col, gameState.playerPlacement.row, 
                             gameState.playerPlacement.orientation, gameState.map.size);
+        this.drawGoal(gameState.goalPlacement, gameState.map.size);
+    }
+
+    drawGoal(goalPlacement, numRowCols) {
+        // Goal = something like an aiming target thingy? Like where you shoot arrows, white and red circles.
+        var p = this.p5_object;
+        var block_width = this.canvas.width / numRowCols;
+        var block_height = this.canvas.height / numRowCols;
+        var real_x = goalPlacement.col * block_width;
+        var real_y = goalPlacement.row * block_height;
+        p.fill(255,255,255);
+        p.circle(real_x + block_width/2, real_y + block_height/2, block_width/2);
+        p.fill(255, 0, 0);
+        p.circle(real_x + block_width/2, real_y + block_height/2, block_width/3);
+        p.fill(255, 255, 255);
+        p.circle(real_x + block_width/2, real_y + block_height/2, block_width/4);
+        p.fill(255, 0, 0);
+        p.circle(real_x + block_width/2, real_y + block_height/2, block_width/5);
     }
 
 
