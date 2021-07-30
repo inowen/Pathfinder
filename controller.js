@@ -26,5 +26,13 @@ class Controller {
         this.view.refresh();
     }
 
+    setPlayerPosition(placement) {
+        this.model.setPlayerPosition(placement);
+    }
+
+    setGoalPosition(placement) {
+        this.model.setGoalPosition(placement);
+    }
+
 }
 

@@ -35,6 +35,9 @@ async function main() {
         controller.step();
     }
 
+    // Setters for player and goal position
+    
+
 }
 
 
