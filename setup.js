@@ -83,7 +83,9 @@ async function main() {
         if (looping) {
             var controller = new Controller();
             controller.step();
-            var timeout = 10; // Change this to account for the speed bar
+            var speedInput = document.getElementById('speed_seekbar');
+            var durationPercentage = 1 - (speedInput.value/100);
+            var timeout = 1000 * durationPercentage;
             setTimeout(gameLoop, timeout);
         }
     }
