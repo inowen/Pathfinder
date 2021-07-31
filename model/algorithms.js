@@ -10,7 +10,6 @@ class Algorithms {
         this.astar = PathfindAstar;
         this.dfs = PathfindDFS;
         this.bfs = PathfindBFS;
-        this.it_deepening = PathfindIterativeDeepening;
         this.greedy = PathfindGreedy;
     }
 }
@@ -46,16 +45,12 @@ function PathfindBFS(root_node, goal_node, map) {
             }
         }
     }
-
     if (path_found) {
         return linkedListToPlan(current_node, root_node);
     }
     return null;
 }
 
-function PathfindIterativeDeepening(root_node, goal_node, map) {
-
-}
 
 function PathfindGreedy(root_node, goal_node, map) {
 
