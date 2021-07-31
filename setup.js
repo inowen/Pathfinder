@@ -36,7 +36,36 @@ async function main() {
     }
 
     // Setters for player and goal position
-    
+    var playerSetter = document.getElementById("btn_player_pos");
+    playerSetter.onclick = function() {
+        var x_input = document.getElementById("player_x_input");
+        var y_input = document.getElementById("player_y_input");
+        var x = x_input.value;
+        var y = y_input.value;
+        // - Do nothing if x and y are something other than numbers.
+        // - Do nothing if it's not on the map
+        // - Do nothing if the coordinates aren't correct (maybe both of these things should be implemented smwh else)
+        console.log("Positioning player at (" + x + "," + y + ")");
+        if (isNaN(x) || isNaN(y)) {
+            console.log("The coordinates are not valid.");
+        }
+        else {
+            console.log("Valid player coordinates given :)");
+        }
+    }
+
+    var goalSetter = document.getElementById("btn_goal_pos");
+    goalSetter.onclick = function() {
+        var x_input = document.getElementById("goal_x_input");
+        var y_input = document.getElementById("goal_y_input");
+        var x = x_input.value;
+        var y = y_input.value;
+        // - Do nothing if x and y are something other than numbers.
+        // - Do nothing if it's not on the map
+        // - Do nothing if the coordinates aren't correct (maybe both of these things should be implemented smwh else)
+        console.log("Positioning player at (" + x + "," + y + ")");
+    }
+
 
 }
 
