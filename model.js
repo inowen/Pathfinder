@@ -33,6 +33,9 @@ class Model {
         var start_node = new PathfinderNode(this.gameState.playerPlacement, this.gameState.vehicle, 0, 0, null);
         var goal_node = new PathfinderNode(this.gameState.goalPlacement, 'x', 0, 0, null);
         var nextPlacement = this.agent.think(start_node, goal_node);
+        if (nextPlacement == null) {
+            return null;
+        }
         // and update the GameState accordingly.
         this.gameState.playerPlacement = nextPlacement;
         this.gameState.plan = this.agent.getStoredPlan();
@@ -51,7 +54,6 @@ class Model {
         console.log(newPlacement);
         if (this.map.isInsideMap(newPlacement.row, newPlacement.col)) {
             if (this.map.isWalkable(newPlacement.row, newPlacement.col)) {
-                console.log("Model about to set player position")
                 this.gameState.playerPlacement = newPlacement;
                 this.agent = new Agent(this.algorithm_name, this.map);
                 this.gameState.plan = [];
