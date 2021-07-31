@@ -3,7 +3,7 @@ C C C C C C C C C C C C C C C C C C C C
 C F F F F F F F F F F F F F F F F F F C
 C O O O O O O F F F F F F F F F F F F C
 C O F F F F F F F F F F F F F F F F F C
-C O F F F F F R R R R R R R R R R F F C
+C O F F c F F R R R R R R R R R R F F C
 C O F F F F F F F F F F F F F F R F F C
 C O O O O O O F F F F F F F F F R F F C
 C W W W W W W F F F F F F F F F R F F C
