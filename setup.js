@@ -42,15 +42,11 @@ async function main() {
         var y_input = document.getElementById("player_y_input");
         var x = x_input.value;
         var y = y_input.value;
-        // - Do nothing if x and y are something other than numbers.
-        // - Do nothing if it's not on the map
-        // - Do nothing if the coordinates aren't correct (maybe both of these things should be implemented smwh else)
-        console.log("Positioning player at (" + x + "," + y + ")");
-        if (isNaN(x) || isNaN(y)) {
-            console.log("The coordinates are not valid.");
-        }
-        else {
-            console.log("Valid player coordinates given :)");
+        if (!isNaN(x) && !isNaN(y)) {
+            var controller = new Controller();
+            if (controller.initialized()) {
+                controller.setPlayerPosition(new Placement(y,x,0));
+            }
         }
     }
 
@@ -60,10 +56,12 @@ async function main() {
         var y_input = document.getElementById("goal_y_input");
         var x = x_input.value;
         var y = y_input.value;
-        // - Do nothing if x and y are something other than numbers.
-        // - Do nothing if it's not on the map
-        // - Do nothing if the coordinates aren't correct (maybe both of these things should be implemented smwh else)
-        console.log("Positioning player at (" + x + "," + y + ")");
+        if (!isNaN(x) && !isNaN(y)) {
+            var controller = new Controller();
+            if (controller.initialized()) {
+                controller.setGoalPosition(new Placement(y,x,0));
+            }
+        }
     }
 
 

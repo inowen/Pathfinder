@@ -28,10 +28,18 @@ class Controller {
 
     setPlayerPosition(placement) {
         this.model.setPlayerPosition(placement);
+        this.view.setGameState(this.model.getGameState());
+        this.view.refresh();
     }
 
     setGoalPosition(placement) {
         this.model.setGoalPosition(placement);
+        this.view.setGameState(this.model.getGameState());
+        this.view.refresh();
+    }
+
+    initialized() {
+        return (this.view && this.model);
     }
 
 }
