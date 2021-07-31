@@ -64,6 +64,30 @@ async function main() {
         }
     }
 
+    // The run/stop button
+    var looping = false;
+    var runStopButton = document.getElementById('run_btn');
+    runStopButton.onclick = function() {
+        if (looping) {
+            looping = false;
+            runStopButton.textContent = "Run";
+        }
+        else {
+            looping = true;
+            runStopButton.textContent = "Stop";
+            gameLoop();
+        }
+    }
+
+    var gameLoop = function() {
+        if (looping) {
+            var controller = new Controller();
+            controller.step();
+            var timeout = 10; // Change this to account for the speed bar
+            setTimeout(gameLoop, timeout);
+        }
+    }
+
 
 }
 
