@@ -60,40 +60,6 @@ class PriorityQueue {
         console.log(this.arr);
         console.log("Current size: " + this.numElements);
     }
-
-    printTree() {
-        let levelSize = 1;
-        let ind = 1;
-        let output = "";
-        while (ind <= this.numElements) {
-            for (var el = 0; el < levelSize; ++el) {
-                output += (this.arr[ind] + " ");
-                ind += 1;
-            }
-            console.log(output);
-            output = "";
-            levelSize *= 2;
-        }
-    }
 }
 
-
-let pq = new PriorityQueue();
-pq.enqueue(5);
-pq.enqueue(1);
-pq.enqueue(7);
-pq.enqueue(9);
-pq.enqueue(12);
-pq.enqueue(4);
-pq.enqueue(3);
-pq.enqueue(0);
-pq.enqueue(88);
-pq.enqueue(11);
-let extracted = pq.pop();
-console.log("First extracted: " + extracted);
-
-while (extracted != undefined) {
-    console.log(extracted);
-    extracted = pq.pop();
-}
 
