@@ -43,7 +43,7 @@ class Map2d {
     }
 
     isInsideMap(row, col) {
-        return row>=0 && col>=0 && row<this.size && col<this.size;
+        return row >= 0 && col >= 0 && parseInt(row)<this.size && parseInt(col)<this.size;
     }
 
     get(row, col) {

@@ -13,6 +13,9 @@ class PathfinderNode {
     constructor(placement, vehicle, cost, combined_cost, parent) {
         this.placement = placement;
         this.vehicle = vehicle;
+        if (this.vehicle == undefined) {
+            this.vehicle = 'x';
+        }
         this.cost = cost;
         this.combined_cost = combined_cost;
         this.parent = parent;
