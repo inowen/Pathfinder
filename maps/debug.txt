@@ -1,6 +1,8 @@
-5 5
-C C C C C
-C F W F C 
-C F W F C
-C b W F C
-C C C C C 
+7 7
+C C C C C C C
+C F W F F F C
+C F W F W F C
+C b W F W F C
+C F F O W F C
+C F F O W F C
+C C C C C C C
