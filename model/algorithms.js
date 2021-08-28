@@ -34,11 +34,13 @@ function PathfindAstar(root_node, goal_node, map) {
         it_count++;
         console.log("Open set: ");
         console.log(openSet);
+        prompt("Click to pick out one");
         // END DEBUG
         current_node = openSet.pop();
         // DEBUG (delete)
         console.log("Picked: ");
         console.log(current_node);
+        prompt("Continue the iteration?");
         // END DEBUG
         if (closedSet.has(current_node)) {
             // DEBUG (delete)
@@ -86,6 +88,7 @@ function PathfindAstar(root_node, goal_node, map) {
         }
         // DEBUG (delete)
         console.log("- - - - - - - - - - - - - - - - - - - - - - - - -");
+        prompt("Press enter for next iteration");
         // END DEBUG
     }
     if (path_found) {
