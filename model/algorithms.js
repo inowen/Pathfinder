@@ -171,7 +171,6 @@ function linkedListToPlan(final_node, root_node) {
     var current_node = final_node;
     while(current_node != root_node) {
         plan.unshift(current_node.placement);
-        console.log(current_node);
         current_node = current_node.parent;
     }
     return plan;

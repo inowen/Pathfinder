@@ -52,11 +52,8 @@ class Model {
     // This should also reset the algorithms somehow... So interaction with the Agent
     setPlayerPosition(newPlacement) {
         console.log(newPlacement);
-        console.log("According to map, this is: " + this.map.get(newPlacement.row, newPlacement.col));
         if (this.map.isInsideMap(newPlacement.row, newPlacement.col)) {
-            console.log("Is inside map.");
             if (this.map.isWalkable(newPlacement.row, newPlacement.col)) {
-                console.log("Passed walkable.");
                 this.gameState.playerPlacement = newPlacement;
                 this.agent = new Agent(this.algorithm_name, this.map);
                 this.gameState.plan = [];

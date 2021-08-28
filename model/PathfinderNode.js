@@ -65,6 +65,7 @@ class PathfinderNode {
             }
         }
 
+        console.log("Created " + children.length + " children.");
         return children;
     }
 
