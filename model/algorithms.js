@@ -25,25 +25,68 @@ function PathfindAstar(root_node, goal_node, map) {
     var closedSet = new EqualitySet();
     var path_found = false;
     var current_node = null;
+    // DEBUG (delete)
+    let it_count = 0;
+    // END DEBUG
     while (openSet.numElements>0 && !path_found) {
+        // DEBUG (delete)
+        console.log("- - - - - - Iteration: " + it_count + " - - - - - - -");
+        it_count++;
+        console.log("Open set: ");
+        console.log(openSet);
+        // END DEBUG
         current_node = openSet.pop();
+        // DEBUG (delete)
+        console.log("Picked: ");
+        console.log(current_node);
+        // END DEBUG
         if (closedSet.has(current_node)) {
+            // DEBUG (delete)
+            console.log("Already a closed node. Continuing.");
+            console.log("- - - - - - - - - - - - - - - - - - - - - - - - -");
+            // END DEBUG
             continue;
         }
         closedSet.add(current_node);
+        // DEBUG (delete)
+        console.log("Closed set after adding: " );
+        console.log(closedSet);
+        // END DEBUG
         if (current_node.placement.row == goal_node.placement.row
             && current_node.placement.col == goal_node.placement.col
         ) {
+            // DEBUG (delete)
+            console.log("The current node is the goal node! Path was found.");
+            // END DEBUG
             path_found = true;
         }
         else {
             var all_children = current_node.generateAllChildren(goal_node, map);
+            // DEBUG (delete)
+            console.log("All children: ");
+            console.log(all_children);
+            console.log("One by one...");
+            // END DEBUG
             for (var i = 0; i < all_children.length; ++i) {
+                // DEBUG (delete)
+                console.log(all_children[i]);
+                // END DEBUG
                 if (!closedSet.has(all_children[i])) {
                     openSet.enqueue(all_children[i]);
+                    // DEBUG (delete)
+                    console.log("Enqueued in the open set.");
+                    // END DEBUG
                 }
+                // DEBUG (delete)
+                else {
+                    console.log("Was already closed");
+                }
+                // END DEBUG
             }
         }
+        // DEBUG (delete)
+        console.log("- - - - - - - - - - - - - - - - - - - - - - - - -");
+        // END DEBUG
     }
     if (path_found) {
         return linkedListToPlan(current_node, root_node);

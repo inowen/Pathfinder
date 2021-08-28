@@ -10,8 +10,6 @@ async function main() {
     const params = new URLSearchParams(window.location.search);
     var algorithm_name = params.get('algorithm');
     var map_name = params.get('map');
-
-    // For debugging (DELETE LINE)
     console.log("Algorithm: " + algorithm_name + " Map: " + map_name);
 
     // Create view, wait for images to load
@@ -93,24 +91,6 @@ async function main() {
 
 }
 
-// Test the priority queue
-var comparator = function (a, b) {
-    if (a == undefined || b == undefined) {
-        return false;
-    }
-    return a.cost < b.cost;
-}
-let pq = new PriorityQueue(comparator);
-
-pq.enqueue({cost:10});
-pq.enqueue({cost:40});
-pq.enqueue({cost:1});
-
-console.log("Taking out:");
-console.log(pq.pop());
-console.log(pq.pop());
-console.log(pq.pop());
-console.log(pq.pop());
 
 main();
 console.log("Launched main function, setup exits.");
