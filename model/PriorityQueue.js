@@ -37,16 +37,13 @@ class PriorityQueue {
             this.comparator(this.arr[child1], this.arr[current]) ||
             this.comparator(this.arr[child2], this.arr[current])
         ) {
-            console.log("Swapping");
             if (this.comparator(this.arr[child2], this.arr[child1])) {
-                console.log("Swapping with right child");
                 let temp = this.arr[child2];
                 this.arr[child2] = this.arr[current];
                 this.arr[current] = temp;
                 current = child2;
             }
             else {
-                console.log("Swapping with left child");
                 let temp = this.arr[child1];
                 this.arr[child1] = this.arr[current];
                 this.arr[current] = temp;
