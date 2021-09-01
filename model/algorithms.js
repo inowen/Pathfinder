@@ -19,7 +19,7 @@ function PathfindAstar(root_node, goal_node, map) {
         if (a==undefined || b==undefined) {
             return false;
         }
-        return a.combined_cost < b.combined_cost;
+        return (1*a.combined_cost < 1*b.combined_cost);
     });
     openSet.enqueue(root_node);
     var closedSet = new EqualitySet();
@@ -29,67 +29,67 @@ function PathfindAstar(root_node, goal_node, map) {
     let it_count = 0;
     // END DEBUG
     while (openSet.numElements>0 && !path_found) {
-        // DEBUG (delete)
+        /* DEBUG (delete)
         console.log("- - - - - - Iteration: " + it_count + " - - - - - - -");
         it_count++;
         console.log("Open set: ");
-        console.log(openSet);
+        console.log(openSet.arr);
         prompt("Click to pick out one");
-        // END DEBUG
+        // END DEBUG */
         current_node = openSet.pop();
-        // DEBUG (delete)
+        /* DEBUG (delete)
         console.log("Picked: ");
         console.log(current_node);
         prompt("Continue the iteration?");
-        // END DEBUG
+        // END DEBUG */
         if (closedSet.has(current_node)) {
-            // DEBUG (delete)
+            /*/ DEBUG (delete)
             console.log("Already a closed node. Continuing.");
             console.log("- - - - - - - - - - - - - - - - - - - - - - - - -");
-            // END DEBUG
+            // END DEBUG */
             continue;
         }
         closedSet.add(current_node);
-        // DEBUG (delete)
+        /*/ DEBUG (delete)
         console.log("Closed set after adding: " );
         console.log(closedSet);
-        // END DEBUG
+        // END DEBUG */
         if (current_node.placement.row == goal_node.placement.row
             && current_node.placement.col == goal_node.placement.col
         ) {
-            // DEBUG (delete)
+            /*/ DEBUG (delete)
             console.log("The current node is the goal node! Path was found.");
-            // END DEBUG
+            // END DEBUG */
             path_found = true;
         }
         else {
             var all_children = current_node.generateAllChildren(goal_node, map);
-            // DEBUG (delete)
+            /*/ DEBUG (delete)
             console.log("All children: ");
             console.log(all_children);
             console.log("One by one...");
-            // END DEBUG
+            // END DEBUG */
             for (var i = 0; i < all_children.length; ++i) {
-                // DEBUG (delete)
+                /*/ DEBUG (delete)
                 console.log(all_children[i]);
-                // END DEBUG
+                // END DEBUG */
                 if (!closedSet.has(all_children[i])) {
                     openSet.enqueue(all_children[i]);
-                    // DEBUG (delete)
+                    /*/ DEBUG (delete)
                     console.log("Enqueued in the open set.");
-                    // END DEBUG
+                    // END DEBUG */
                 }
-                // DEBUG (delete)
+                /*/ DEBUG (delete)
                 else {
                     console.log("Was already closed");
                 }
-                // END DEBUG
+                // END DEBUG */
             }
         }
-        // DEBUG (delete)
+        /*/ DEBUG (delete)
         console.log("- - - - - - - - - - - - - - - - - - - - - - - - -");
         prompt("Press enter for next iteration");
-        // END DEBUG
+        // END DEBUG */
     }
     if (path_found) {
         return linkedListToPlan(current_node, root_node);
@@ -163,7 +163,7 @@ function PathfindGreedy(root_node, goal_node, map) {
         }
         let a_heur = a.combined_cost - a.cost;
         let b_heur = b.combined_cost - b.cost;
-        return a_heur < b_heur;
+        return 1*a_heur < 1*b_heur;
     });
     openSet.enqueue(root_node);
     var closedSet = new EqualitySet();
